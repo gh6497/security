@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:D:\Github\security\browser-demo\src\main\resources\browser.db
+    username: root
+    password: 6497
+server:
+  port: 8081

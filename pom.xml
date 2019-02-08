@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <modules>
+        <module>security-core</module>
+        <module>security-core</module>
+        <module>security-core</module>
+        <module>browser-demo</module>
+        <module>security-browser</module>
+        <module>security-app</module>
+        <module>app-demo</module>
+        <module>security-oauth2</module>
+    </modules>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.2.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>cn.len</groupId>
+    <artifactId>security</artifactId>
+    <version>1.0.0</version>
+    <name>security</name>
+    <description>security-wrapper</description>
+
+    <properties>
+        <junit.jupiter.version>5.3.1</junit.jupiter.version>
+        <java.version>11</java.version>
+    </properties>
+
+    <dependencyManagement>
+
+        <dependencies>
+
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit.jupiter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>${junit.jupiter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-params</artifactId>
+                <version>${junit.jupiter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security.oauth</groupId>
+                <artifactId>spring-security-oauth2</artifactId>
+                <version>2.0.14.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.social</groupId>
+                <artifactId>spring-social-security</artifactId>
+                <version>1.1.4.RELEASE</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-jwt -->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-jwt</artifactId>
+                <version>1.0.10.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.social</groupId>
+                <artifactId>spring-social-config</artifactId>
+                <version>1.1.4.RELEASE</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->
+            <dependency>
+                <groupId>org.xerial</groupId>
+                <artifactId>sqlite-jdbc</artifactId>
+                <version>3.25.2</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

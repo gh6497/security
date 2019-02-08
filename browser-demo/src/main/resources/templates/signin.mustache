@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="/webjars/jquery/3.3.1/dist/jquery.min.js"></script>
+    <script src="/webjars/axios/0.18.0/dist/axios.min.js"></script>
+    <script src="/webjars/len/service.js"></script>
+    <title>登录页</title>
+</head>
+<body>
+<div>
+    <h1>用户名密码登录</h1>
+    <form action="/authenticate/form" method="post"  id="form1">
+        <div>
+            <label for="username">用户名</label>
+            <input type="text" id="username" name="username">
+        </div>
+        <div>
+            <label for="password">用户名</label>
+            <input type="password" id="password" name="password">
+        </div>
+        <div>
+            <label for="code1">验证码</label>
+            <input type="text" id="code1" name="code"> <img id="imgCode" src="/code/image" alt="验证码">
+        </div>
+        <div>
+            <label for="remember1">记住我</label>
+            <input type="checkbox" id="remember1" name="remember-me" value="on">
+        </div>
+    </form>
+    <button onclick="formLogin()">登录</button>
+</div>
+
+
+<div>
+    <h1>手机号+验证码登录</h1>
+    <form action="/authenticate/mobile" method="post">
+        <div>
+            <label for="mobile">手机号</label>
+            <input type="text" id="mobile" name="mobile" value="17756597967">
+        </div>
+        <div>
+            <label for="code">
+                验证码
+            </label>
+            <input type="text" id="code" name="code"> <a href="/code/sms?mobile=17756597967">发送验证码</a>
+        </div>
+        <div>
+            <label for="remember2">记住我</label>
+            <input type="checkbox" id="remember2" name="remember-me" value="on">
+        </div>
+    </form>
+    <button onclick="formLogin()">登录</button>
+</div>
+<script>
+    function formLogin() {
+        const form1 = document.querySelector('#form1');
+        const formData = $('#form1').serialize();
+        axios.post(form1.action, formData).then((res)=>{
+            location.href = res.redirectUrl;
+        }).catch((error)=>{
+            alert(error.response.data.message);
+            flushImageCode();
+        });
+    }
+
+    function flushImageCode() {
+        document.querySelector('#imgCode').src = `/code/image?random=${Math.random()}`
+    }
+</script>
+</body>
+</html>
